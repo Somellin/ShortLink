@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shortener</title>
+    <link rel="icon" href="../static/ico/donut.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../static/style/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+          crossorigin="anonymous">
+</head>
+<body>
+<div id="root">
+    <div class="main">
+        <div>
+            <div class="head-app">
+                <img class="head-img" src="../static/ico/donut.svg" width="60" height="60" alt="logo">
+                <h1 class="head-title">Укротитель ссылок</h1>
+            </div>
+            <div>
+                <span class="subscribe">
+                    Программа по сокращению ссылок создана в качестве тестового задания. </br>
+                    Дизайн страницы хотелось бы сделать получше, но к сожалению я не фронтендер :)
+                </span>
+            </div>
+            <div class="main-input">
+                <div class="input-group mb-3">
+                    <form class="form-input"
+                          th:action="@{/SL/}"
+                          method="get">
+                        <div class="input-group mb-3">
+                            <input id="input-link" type="text"
+                                   class="form-control"
+                                   placeholder="Введите ссылку которую нужно сократить"
+                                   aria-label="Ссылка которую нужно укротить"
+                                   aria-describedby="button-addon"
+                                   th:value="${longLink}" name="longLink">
+                            <button class="btn btn-outline-primary"
+                                    type="submit"
+                                    id="button-addon">
+                                Укротить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div th:if="${tokenLink ne null}" class="main-output">
+                <div class="card">
+                    <div class="p-3">
+                        <div class="mb-3 output-link ">
+                            <img class="link-s" src="../static/ico/link.svg"  width="30" height="30" alt="link">
+                            <a class="link-l" th:href="${tokenLink}">
+                                <span id="copy_link" th:text="${tokenLink}"></span>
+                            </a>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" onclick="copyLink()">Копировать</button>
+                            <div id="liveAlertPlaceholder"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyLink() {
+        const cb = navigator.clipboard;
+        const paragraph = document.querySelector('#copy_link');
+        cb.writeText(paragraph.innerText).then(() => alert('Ссылка скопирована'));
+    }
+</script>
+</body>
+</html>

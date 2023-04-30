@@ -1,0 +1,52 @@
+.main {
+    width: 700px;
+    margin: 100px auto 0;
+}
+
+.head-app {
+    display: flex;
+    align-items:center;
+    justify-content: start;
+    vertical-align: middle;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.head-img {
+}
+
+.head-title {
+    margin-left: 10px;
+}
+
+.subscribe{
+    color: slategray;
+    font-size: 17px;
+    line-height: 24px;
+    margin-top: 20px;
+}
+
+.main-input {
+    margin-top: 20px;
+}
+
+.form-input {
+    width: 100%;
+}
+
+.link-s {
+    fill: brown;
+}
+.link-l {
+    text-decoration: none;
+}
+.link-l:hover {
+    text-decoration: none;
+    color: brown;
+}
+.output-link {
+    font-size: 25px;
+    fill: white;
+}
+
+
